@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProjectWorkDemo.Models.GetMezziById>
+
+@{
+    ViewData["Title"] = "Elenco Auto";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>@sharedResource["Mezzi"]</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="idfn">
+                        @sharedResource["Produttore"]
+                    </th>
+                    <th class="n">
+                        @sharedResource["Modello"]</a>
+                    </th>
+                    <th class="l">
+                        @sharedResource["Targa"]
+                    </th>
+                    <th class="c">
+                        @sharedResource["DataImmatricolazione"]</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="idfn">
+                            @Html.DisplayFor(modelItem => item.Denominazione)
+                        </td>
+                        <td class="n">
+                            @Html.DisplayFor(modelItem => item.TipoAuto)
+                        </td>
+                        <td class="l">
+                            @Html.DisplayFor(modelItem => item.Targa)
+                        </td>
+                        <td class="c">
+                            @Html.DisplayFor(modelItem => item.DataImmatricolazione)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>

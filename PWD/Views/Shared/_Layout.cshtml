@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Justice League</title>
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+<body>
+    <header>
+        <nav class="push">
+            <div class="container-fluid">
+                <div class="navbar-collapse">
+                    <div class="logBar">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+    <div class="scritta"></div>
+    <div class="push">
+        <footer>
+            <div class="footBar">
+                &copy; 2022 - JusticeLeagues's Website - <a onclick="location.href='https://www.therichest.com/world-entertainment/15-reasons-why-the-justice-league-is-better-than-the-avengers/'">Per ulteriori informazioni CLICCA QUI!</a>
+            </div>
+        </footer>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

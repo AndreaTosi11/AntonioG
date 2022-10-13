@@ -1,0 +1,119 @@
+﻿@model IEnumerable<ProjectWorkDemo.Models.Lavorazione>
+@{
+    ViewData["Title"] = "IndexSelectByTarga";
+}
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["Lavorazioni"]</h1>
+        <div class="table-responsive">
+            <form class="form-search" method="get" asp-action="Index">
+                <a class="nav-link-back" asp-controller="Mezzo" asp-action="Index">@sharedResource["OttieniOgniMezzi"]</a>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                         <th>
+                            @sharedResource["Targa"]
+                        </th>
+                        <th>
+                            @sharedResource["NomeDitta"]
+                        </th>                       
+                        <th>
+                            @sharedResource["CodiceIdentificativo"]
+                        </th>
+                        <th>
+                            @sharedResource["DataLavorazione"]
+                        </th>
+                        <th>
+                            @sharedResource["CostoTotaleDellaLavorazione"]
+                        </th>
+                        <th>
+                            @sharedResource["Garanzia"]
+                        </th>
+                        <th>
+                            @sharedResource["CodiceGaranzia"]
+                        </th>              
+                        <th class="new">
+                            <p>
+                                @*<a asp-action="Index">Crea Nuovo Lavorazione</a>*@
+                            </p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr> 
+                             <td>
+                                @Html.DisplayFor(modelItem => item.IdMezzoNavigation.Targa)
+                            </td>
+                             <td>
+                                @Html.DisplayFor(modelItem => item.IdFornitoriNavigation.NomeDitta)
+                            </td>                       
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodiceIdentificativo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataLavorazione)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CostoTotaleLavorazione) €
+                            </td>
+                            <td>
+                                @if (item.Garanzia == true)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Garanzia)
+                                    <style>
+                                        input[type=checkbox]:checked {
+                                            outline: 2px solid #dec709;
+                                            width: 15px;
+                                            height: 15px;
+                                            color: #dec709;
+                                        }
+                                    </style>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.Garanzia)
+                                }
+                            </td>
+                            <td>
+                                @if (item.NumGaranzia != null)
+                                {
+                                    @Html.DisplayFor(modelItem => item.NumGaranzia)
+                                }
+                                else
+                                {
+                                    <p class="x">X</p>
+                                    <style>
+                                        p.x {
+                                            color: #dec709;
+                                            font-size: 16px;
+                                        }
+                                    </style>
+                                }
+                            </td>                             
+                            <td>
+                                <a asp-controller="Dettaglio" asp-action="IndexFromMezzi" asp-route-id="@item.IdLavorazione" asp-route-idMezzo="@item.IdMezzo">@sharedResource["Dettaglio"]</a>
+                       
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+

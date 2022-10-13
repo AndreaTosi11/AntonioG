@@ -1,0 +1,36 @@
+﻿@page
+@model ShowRecoveryCodesModel
+@{
+    ViewData["Title"] = "Recovery codes";
+    ViewData["ActivePage"] = "TwoFactorAuthentication";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+<h2>@sharedResource["CodiciDiRecupero"]</h2>
+<div class="form-group" role="alert">
+    <p>
+        <strong>@sharedResource["Salva questi codici in un posto sicuro."]</strong>
+    </p>
+    <p>
+        @sharedResource["Se perdi il tuo dispositivo mobile e non dovessi averti salvato almeno uno dei codici di recupero sottostanti, perderai l'accesso al tuo account."]
+    </p>
+</div>
+<div class="form-group">
+    <div class="col-md-12">
+        @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
+        {
+            <code class="recovery-code">@Model.RecoveryCodes[row]</code><text>&nbsp;</text><code class="recovery-code">@Model.RecoveryCodes[row + 1]</code><br />
+        }
+    </div>
+</div>
+</div>
+</body>

@@ -1,0 +1,37 @@
+﻿@page
+@model ResetAuthenticatorModel
+@{
+    ViewData["Title"] = "Reset authenticator key";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+<partial name="_StatusMessage" for="StatusMessage" />
+<h2>@sharedResource["ReimpostaLaChiaveDiAutenticazione"]</h2>
+<div class="form-group" role="alert">
+    <p>
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <strong>@sharedResource["Se vuoi reimpostare la tua chiave di autenticazione, la tua app non funzionerá piú fino a che non la si riconfigura."]</strong>
+    </p>
+    <p>
+        @sharedResource["Questo processo va a disabilitare il 2FA fino a che non verifichi la tua app di autenticazione. Se non dovessi completare la tua configurazione della tua app di autenticazione, potresti perdere láccesso al tuo accuont."]
+    </p>
+</div>
+        <div class="row">
+    <form class="form" id="reset-authenticator-form" method="post">
+        <div class="form-group">
+        <button id="reset-authenticator-button" class="btn-submit-dngr" type="submit">@sharedResource["ReimpostaLaChiaveDiAutenticazione"]</button>
+        </div>
+    </form>
+</div>
+</div>
+</body>

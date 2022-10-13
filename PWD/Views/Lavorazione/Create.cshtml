@@ -1,0 +1,68 @@
+﻿@model ProjectWorkDemo.Models.Lavorazione
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+      <style>
+    #box {
+     visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["CreaLavorazione"]</h1>
+<div class="row">
+        <form class="from" asp-action="Create">
+            <div class="formCenter">
+            <div class="btl">
+                <a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFornitori" class="control-label">@sharedResource["FornitoriName"]</label>
+                <select asp-for="IdFornitori" class ="form-control" asp-items="ViewBag.IdFornitori"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdMezzo" class="control-label">@sharedResource["Targa"]</label>
+                <select asp-for="IdMezzo" class ="form-control" asp-items="ViewBag.IdMezzo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodiceIdentificativo" class="control-label">@sharedResource["CodiceIdentificativo"]</label>
+                <input asp-for="CodiceIdentificativo" class="form-control" />
+                <span asp-validation-for="CodiceIdentificativo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataLavorazione" class="control-label">@sharedResource["DataLavorazione"]</label>
+                <input asp-for="DataLavorazione" class="form-control" />
+                <span asp-validation-for="DataLavorazione" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" id="chkGaranzia" onclick="EnableDisableTextBox(this)" asp-for="Garanzia" /> @sharedResource["Garanzia"]
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumGaranzia" class="control-label">@sharedResource["CodiceGaranzia"]</label>
+                <input asp-for="NumGaranzia"  id="txtNumGaranzia" disabled="disabled" class="form-control"/>
+                <span asp-validation-for="NumGaranzia" class="text-danger"></span>
+            </div>
+            <script src="/js/index.js"></script>
+            <div class="form-submit">
+                <input type="submit" value="@sharedResource["Crea"]" class="btn-submit" />
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

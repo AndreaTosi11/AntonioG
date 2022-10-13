@@ -1,0 +1,318 @@
+﻿
+/* All */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basics */
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-right: 0px;
+    background-color: #f3f3f3;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    background-image: url("/img/NeroPietra.jpg");
+}
+
+.container {
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 30px;
+    margin-right: 0px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+/* Titolo Alias title*/
+
+h1 {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    margin: 0;
+    color: #dec709;
+    font-size: 30px;
+    text-align: center;
+    pointer-events: none;
+}
+
+h2 {
+    width: 100%;
+    height: 20px;
+    padding: 30px;
+    margin: 0;
+    color: #dec709;
+    text-align: center;
+    pointer-events: none;
+}
+
+h2.card-title {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 17px !important;
+}
+
+hr {
+    border: 1px solid #ffe300;
+    width: 100%;
+}
+
+.formMaps {
+    width: 100%;
+    height: 400px;
+    border: #dec709 solid 3px;
+    border-radius: 10px;
+}
+
+ol {
+    overflow: hidden;
+    padding: 0;
+    list-style-type: none;
+}
+
+    ol.list {
+        width: 100%;
+        height: 100%;
+        list-style-type: none;
+        position: relative;
+        text-align: center;
+    }
+
+        ol.list li {
+            height: 10px;
+            display: inline-flex;
+            padding: 0 10px;
+            line-height: 70px;
+        }
+
+            ol.list li p kbd {
+                padding: 5px;
+                border-bottom: 1px solid #ff0000;
+                border-radius: 70px;
+            }
+
+p {
+    font-size: 13px;
+    color: #fff;
+}
+
+p.dng {
+    color: #ff0000;
+    font-size: 20px;
+}
+
+strong.dngr {
+    color: #ff0000;
+}
+
+/* List sections Alias List */
+form.form {
+    width: 100%;
+    height: fit-content;
+    block-size: fit-content;
+    display: block;
+    padding: 30px;
+}
+
+.formCenter, .btl, .form-submit {
+    display: grid;
+    text-align: center;
+    justify-items: right;
+}
+
+.form-group {
+    width: 100%;
+    height: 30px;
+    padding: 20px 0;
+    display: grid;
+    text-align: center;
+    justify-items: center;
+    block-size: fit-content;
+    color: #dec709;
+}
+
+.form-group1 {
+    width: 100%;
+    height: 30px;
+    padding: 20px 0;
+    display: grid;
+    text-align: center;
+    justify-items: left;
+    justify-content: center;
+    block-size: fit-content;
+    color: #dec709;
+}
+
+.form-check {
+    margin: 10px 0;
+    margin-left: 35%;
+}
+
+.form-left {
+    width: 100%;
+    display: grid;
+    text-align: center;
+    justify-items: left;
+}
+
+.form-right {
+    width: 100%;
+    display: grid;
+    text-align: center;
+    justify-items: right;
+}
+
+.form-group input, .form-group select {
+    margin: 10px 0;
+}
+
+/* Error Message Alias e */
+
+div.form-group span {
+    width: 300px;
+    height: 10px;
+    margin: -14px 30px;
+    margin-right: -450px;
+    display: grid;
+    text-align: left;
+    color: #ff6a00;
+}
+
+/* List Details Alias input */
+
+div.form-group input {
+
+}
+
+div.form-group input:hover {
+    text-decoration: none;
+    background-color: #2f2f2f;
+    color: #dec709;
+    border: #dec709 solid 2px;
+}
+
+div.form-group input:active {
+    background-color: #dec709;
+    color: #2f2f2f;
+    border: #2f2f2f solid 2px;
+}
+
+div.form-group input:focus {
+    outline-color: #dec709;
+}
+
+/* Buttons Alias btn */
+
+a.nav-link-back,
+input.btn-submit,
+button.btn-submit,
+a.btn-submit {
+    text-decoration: none;
+    background-color: #2f2f2f;
+    color: #dec709;
+    padding: 5px;
+    border: #fff solid 1px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+    a.nav-link-back:hover,
+    input.btn-submit:hover,
+    button.btn-submit:hover,
+    a.btn-submit:hover {
+        text-decoration: underline;
+        border: #dec709 solid 1px;
+        border-radius: 10px;
+    }
+
+    a.nav-link-back:active,
+    input.btn-submit:active,
+    button.btn-submit:active,
+    a.btn-submit:active {
+        background-color: #dec709;
+        color: #2f2f2f;
+        border: #2f2f2f solid 1px;
+        border-radius: 10px;
+    }
+
+input.btn-submit-dngr,
+button.btn-submit-dngr,
+a.btn-submit-dngr {
+    text-decoration: none;
+    background-color: #171717;
+    color: #db0000;
+    padding: 5px;
+    border: #000 solid 3px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+    input.btn-submit-dngr:hover,
+    button.btn-submit-dngr:hover,
+    a.btn-submit-dngr:hover {
+        text-decoration: underline;
+        border: #db0000 solid 3px;
+        border-radius: 10px;
+    }
+
+    input.btn-submit-dngr:active,
+    button.btn-submit-dngr:active,
+    a.btn-submit-dngr:active {
+        background-color: #171717;
+        color: #000;
+        border: #db0000 solid 3px;
+        border-radius: 10px;
+    }
+
+ol.list li a.navMA,
+div.form-group p.curvedUnderline a.navMA,
+div form.form div.formCenter div.form-group p a.navMA,
+div.form-group p a.navMA,
+button.navMA {
+    text-decoration: none !important;
+    text-align: center !important;
+    font-size: 15px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    color: #ffffff !important;
+    padding: 0 15px !important;
+    font-size: 13px !important;
+    background-color: #ff000055 !important;
+    border-radius: 70px !important;
+}
+
+    ol.list li a.navMA:hover,
+    div.form-group p.curvedUnderline a.navMA:hover,
+    div form.form div.formCenter div.form-group p a.navMA:hover,
+    div.form-group p a.navMA:hover
+    button.navMA {
+        text-decoration: none !important;
+        background-color: #00000000 !important;
+        color: #dec709 !important;
+        border-bottom: #dec709 solid 2px !important;
+    }
+
+    /* To solve Border */
+    ol.list li a.navMA:active,
+    div.form-group p.curvedUnderline a.navMA:active,
+    div form.form div.formCenter div.form-group p a.navMA:active,
+    div.form-group p a.navMA:active,
+    button.navMA,
+    kbd:hover {
+        background-color: #00000099 !important;
+        color: #fff !important;
+        border: none !important;
+        border-radius: 70px !important;
+    }

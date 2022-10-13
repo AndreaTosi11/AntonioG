@@ -1,0 +1,92 @@
+﻿@using ProjectWorkDemo.Models
+@model ProjectWorkDemo.Models.Utente
+
+@{
+    ViewData["Title"] = "EditUsers";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Modifica Fornitore</title>
+</head>
+
+<body>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="container">
+        <h1 class="main-titel">Add a Fornitore</h1>
+        <form method="post" enctype="multipart/form-data" asp-action="CreateForn">
+            <div asp-validation-summary="All"></div>
+            @*<div class="form-field">
+                <label asp-for="NomeUtente"></label>
+                <label asp-for="IdUtente"></label>
+                <p>to</p>
+                <input asp-for="NewIdUtente" />
+                <span asp-validation-for="NomeDitta"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Indirizzo"></label>
+                <label asp-for="IdIndirizzo"></label>
+                <p>to</p>
+                <input asp-for="NewIdIndirizzo" />
+                <span asp-validation-for="Indirizzo"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Telefono"></label>
+                <label asp-for="IdTelefono"></label>
+                <p>to</p>
+                <input asp-for="NewIdTelefono" />
+                <span asp-validation-for="Telefono"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="PIva"></label>
+                <label asp-for="IdPIva"></label>
+                <p>to</p>
+                <input asp-for="NewIdPIva" />
+                <span asp-validation-for="PIva"></span>
+            </div>*@
+@*             <div class="form-field">
+                <label asp-for="CatInterventoID"></label>
+                <select asp-for="CatInterventoID" asp-items="">
+                    <option selected="selected" value="">Select</option>
+                </select>
+                <span asp-validation-for="CatInterventoID"></span>
+            </div>*@
+            <div class="form-field">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+    <!--Non Sono sicuro di quello che dovete fare con sto pezzo di codice-->
+    <div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditForn">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

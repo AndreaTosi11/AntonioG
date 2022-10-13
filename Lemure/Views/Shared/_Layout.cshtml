@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - Lemure</title>
+	<link rel="stylesheet" href="~/css/generalStyles.css" />
+	<link rel="stylesheet" href="~/css/generalNavbar.css" />
+</head>
+<body>
+	<div class="info">Info message</div>
+	<div class="success">Successful operation message</div>
+	<div class="warning">Your screen to body ratio does not match with this website design!</div>
+	<div class="error">Error message</div>
+	<div class="validation">Validation message 1<br>Validation message 2</div>
+<div class="wholebody">
+	<header class="header">
+		<a class="logo11" asp-area="" asp-controller="Home" asp-action="Index"><img class="imgSize logo1" src="/img/logoScitta.png" alt="Logo" /></a>
+		@*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+		</button>*@
+		<input type="checkbox" class="menu-btn" id="menu-btn">
+		<label for="menu-btn" class="menu-icon">
+			<span class="nav-icon"></span>
+		</label>
+		<a class="logo21" asp-area="" asp-controller="Home" asp-action="Index"><img class="imgSize logo2" src="/img/transparent2.png" alt="Logo2" /></a>
+			<ul class="menu">
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Video</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Blog</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Racconta la tua Storia</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Collabora</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Chi Siamo</a>
+				</li>
+			</ul>
+	</header>
+
+	<main role="main" class="pb-3">
+		@RenderBody()
+	</main>
+
+	<div class="push">
+		<footer>
+			<div class="footBar">
+				<p class="cc">&copy; 2022 - Lemure - <a class="privacy" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
+			</div>
+		</footer>
+	</div>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+	</div>
+</body>
+</html>

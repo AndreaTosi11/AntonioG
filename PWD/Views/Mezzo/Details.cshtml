@@ -1,0 +1,56 @@
+﻿@model ProjectWorkDemo.Models.Mezzo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/details-delete.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["TornaDettagliMezzoAllaLista"]</h1>
+    <div class="form">
+        <div class="formCenter">
+        <div class="btl">
+            <a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+        </div>
+        <div class="head-body">
+        <dl>
+          <dt class = "col-sm-2">
+            @sharedResource["Produttore"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProduttoreNavigation.Denominazione)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["Modello"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoAuto)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["Targa"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Targa)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["DataImmatricolazione"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataImmatricolazione)
+        </dd>
+        </dl>
+        </div>
+        <div class="btl">
+            <a class="nav-link-back" asp-action="Edit" asp-route-id="@Model?.IdMezzo">@sharedResource["Modifica"]</a>
+        </div>
+        </div>
+    </div>
+</div>
+</body>

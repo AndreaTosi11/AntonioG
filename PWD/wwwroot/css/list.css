@@ -1,0 +1,220 @@
+﻿
+/* All */
+
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Basics */
+
+body {
+    height: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    margin-right: 0px !important;
+    background-color: #f3f3f3 !important;
+    font-size: 13px !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    position: relative !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    background-image: url("/img/NeroPietra.jpg") !important;
+}
+
+.container {
+    min-height: 100% !important;
+    min-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 30px !important;
+    margin-right: 0px !important;
+    position: relative !important;
+    bottom: 0 !important;
+    left: 0 !important;
+}
+
+/* Titolo Alias title*/
+
+h1 {
+    width: 100% !important;
+    height: 100px !important;
+    padding: 30px !important;
+    margin: 0 !important;
+    color: #dec709 !important;
+    font-size: 30px !important;
+    text-align: center !important;
+    pointer-events: none !important;
+}
+
+/* List sections Alias List */
+
+table {
+    width: 100% !important;
+    height: fit-content !important;
+    pointer-events: auto !important;
+    background-color: #2f2f2fbb !important;
+}
+
+img.Arrows {
+    width: 40%;
+    height: 50%;
+}
+
+li.Arrows {
+    width: 70px !important;
+    height: 70px !important;
+}
+
+form.form-search {
+    padding: 15px 20px !important;
+}
+
+form.form-search input.btn-submit {
+    margin-left: 10px !important;
+}
+
+form.form-search input.src-submit {
+    width: 100px;
+}
+
+form.form-search a.nav-link-back {
+    float: right;
+}
+
+table thead {
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+table thead tr {
+    width: 100% !important;
+    padding: 0 30px !important;
+    block-size: fit-content !important;
+    border: none !important;
+}
+
+    table thead tr th {
+        padding: 10px !important;
+        border: 1px solid #ffffffa1 !important;
+        border-bottom: 1px solid #ffffff00 !important;
+        color: #dec709 !important;
+    }
+
+    table thead tr th.c, table thead tr th.idfn {
+        color: #dec709;
+    }
+
+/* List Body Alias tbody */
+
+table tbody {
+
+    text-align: center !important;
+    justify-content: center !important;
+}
+
+table tbody tr {
+    width: 100% !important;
+    padding: 0 30px !important;
+    block-size: fit-content !important;
+    border: none !important;
+}
+
+table tbody tr td {
+    padding: 10px !important;
+    border-bottom: 1px solid #ffffffa1 !important;
+}
+
+table thead tr th a.sort {
+    color: #dec709;
+    pointer-events: auto !important;
+}
+
+
+
+/* TH & TD List Alias th/td */
+/*table thead tr th.n, table tbody tr td.n {
+    pointer-events: auto;
+    width: 100px;
+}
+
+table thead tr th.c, table tbody tr td.c {
+    width: 150px;
+}
+
+table thead tr th.t, table tbody tr td.t {
+    width: 100px;
+}
+
+table thead tr th.i, table tbody tr td.i {
+    width: 150px;
+}
+
+table thead tr th.pi, table tbody tr td.pi {
+    width: 100px;
+}
+
+table thead tr th.l, table tbody tr td.l {
+    width: 130px;
+}
+
+table thead tr th.idfn, table tbody tr td.idfn {
+    width: 180px;
+}
+
+table thead tr th.new, table tbody tr td.new {
+    pointer-events: auto !important;
+    border: none !important;
+    border-right: 1px solid #ffffffa1 !important;
+}
+
+/* Color and Hover/Active Alias color/hover/active */
+
+table thead tr th p a, table tbody tr td a  {
+    text-decoration: none !important;
+    background-color: #2f2f2f !important;
+    color: #dec709 !important;
+    padding: 2px !important;
+    border: #fff solid 1px !important;
+    border-radius: 5px !important;
+}
+
+table thead tr th p a:hover, table tbody tr td a:hover {
+    text-decoration: underline !important;
+    border: #dec709 solid 1px !important;
+    border-radius: 10px !important;
+}
+
+table thead tr th p a:active, table tbody tr td a:active {
+    background-color: #dec709 !important;
+    color: #2f2f2f !important;
+    border: #2f2f2f solid 1px !important;
+    border-radius: 10px !important;
+}
+
+a.nav-link-back, a.btn-default, input.btn-submit, input.src-submit {
+    text-decoration: none;
+    background-color: #2f2f2f;
+    color: #fff;
+    padding: 5px !important;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+    a.nav-link-back:hover, a.btn-default:hover, input.btn-submit:hover, input.src-submit:hover {
+        text-decoration: underline;
+        border: #dec709 solid 1px;
+        border-radius: 10px;
+        color: #dec709;
+    }
+
+    a.nav-link-back:active, a.btn-default:active, input.btn-submit:active, input.src-submit:active {
+        background-color: #dec709;
+        color: #2f2f2f;
+        border: #2f2f2f solid 1px;
+        border-radius: 10px;
+    }

@@ -1,0 +1,55 @@
+﻿@model ProjectWorkDemo.Models.Mezzo
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["ModificaMezzo"]</h1>
+<div class="row">
+        <form class="from" asp-action="Edit">
+            <input type="hidden" asp-for="IdMezzo" />
+            <div class="formCenter">
+            <div class="btl">
+                <a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProduttore" class="control-label">@sharedResource["Produttore"]</label>
+                <select asp-for="IdProduttore" class="form-control" asp-items="ViewBag.IdProduttore"></select>
+                <span asp-validation-for="IdProduttore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoAuto" class="control-label">@sharedResource["Modello"]</label>
+                <input asp-for="TipoAuto" class="form-control" />
+                <span asp-validation-for="TipoAuto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Targa" class="control-label">@sharedResource["Targa"]</label>
+                <input asp-for="Targa" class="form-control" />
+                <span asp-validation-for="Targa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataImmatricolazione" class="control-label">@sharedResource["DataImmatricolazione"]</label>
+                <input asp-for="DataImmatricolazione" class="form-control" />
+                <span asp-validation-for="DataImmatricolazione" class="text-danger"></span>
+            </div>
+            <div class="form-submit">
+                <input type="submit" value="@sharedResource["Crea"]" class="btn-submit" />
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,161 @@
+﻿@model PaginatedList<ProjectWorkDemo.Models.Fornitori>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["GestioneFornitori"]</h1>
+        <div class="table-responsive">
+            @*BARRA DI RICERCA E BOTTONE RESET RICERCA*@
+            <form class="form-search" method="get" asp-action="Index">
+                <input type="search" placeholder="@sharedResource["RicercaNomeDitta"]" class="src-submit" value="@ViewData["Getforndetails"]" name="Fornsearch" style="width:500px" />
+                <input type="submit" value="@sharedResource["Invia"]" class="btn-submit" />
+                <a class="nav-link-back" asp-action="Index">@sharedResource["OttieniOgniFornitore"]</a>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="n">
+                            <a asp-action="Index" asp-route-sortingforn="@ViewData["FornitoriName"]" asp-route-currentFilter="@ViewData["Getforndetails"]">@sharedResource["NomeDitta"]</a>
+                        </th>
+                        <th>
+                            UserId
+                        </th>
+                        <th class="c">
+                            @sharedResource["DataDiCreazione"]
+                        </th>
+                        <th class="t">
+                            @sharedResource["Telefono"]
+                        </th>
+                        <th class="i">
+                            @sharedResource["Indirizzo"]
+                        </th>
+                        <th class="pi">
+                            @sharedResource["IVA"]
+                        </th>
+                        @*                        <th class="l">
+                        @Html.DisplayNameFor(model => model.Lavorazioni)
+                        </th>*@
+                        @*  <th class="idfn">
+                        <a asp-action="Index" asp-route-sortingforn="@ViewData["Fornitoritype"]">@Html.DisplayNameFor(model => model.IdTipoFornNavigation)</a>
+                        </th>*@
+                        <th class="new">
+                            <p>
+                                <a asp-action="Create">@sharedResource["CreaNuovoFornitore"]</a>
+                            </p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="n">
+                                @Html.DisplayFor(modelItem => item.NomeDitta)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.User.Id)
+                            </td>
+                            <td class="c">
+                                @Html.DisplayFor(modelItem => item.DataCreazione)
+                            </td>
+                            <td class="t">
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
+                            <td class="i">
+                                @Html.DisplayFor(modelItem => item.Indirizzo)
+                            </td>
+                            <td class="pi">
+                                @Html.DisplayFor(modelItem => item.Piva)
+                            </td>
+                            <td class="new">
+                                <a asp-action="Edit" asp-route-id="@item.IdFornitori">@sharedResource["Modifica"]</a>
+                                <a asp-action="Details" asp-route-id="@item.IdFornitori">@sharedResource["Informazioni"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdFornitori">@sharedResource["Cancella"]</a> ||
+                                <a asp-controller="ServiziFornitore" asp-action="IndexSelectByNomeDitta" asp-route-id="@item.IdFornitori">@sharedResource["Servizi"]</a>
+                                <a asp-controller="ServiziFornitore" asp-action="Create" asp-route-id="@item.IdFornitori">@sharedResource["AggiungiServizio"]</a> ||
+                                <a asp-controller="Lavorazione" asp-action="IndexSelectByFornitore" asp-route-id="@item.IdFornitori">@sharedResource["Lavorazioni"]</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+                    <br />
+
+            <div class="container">
+                @if (Model.TotalPages > 0)
+                {
+                    <ul class="pagination justify-content-center">
+                        @*'SPEGNE' I BOTTONI PRECEDENTE E PROSSIMO*@
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+                        @* GLI ASP-ROUTE PERMETTONO DI MANTENERE I FILTRI ATTIVI QUANDO SI CAMBIA PAGINA*@
+                        @*PAGINE PRECEDENTI*@
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortingforn="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="1"
+                           asp-route-currentFilter="@ViewData["Getforndetails"]"
+                           class="Arrows btn btn-default @prevDisabled">
+                                <img class="Arrows" src="/img/3Start.png">
+                            </a>
+                        </li>
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortingforn="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           asp-route-currentFilter="@ViewData["Getforndetails"]"
+                           class="Arrows btn btn-default @prevDisabled">
+                                <img class="Arrows" src="/img/4Prev.png">
+                            </a>
+                        </li>
+
+                        @for (var pg = Model.StartPage; pg <= Model.TotalPages; pg++) @* DALLA PRIMA FINO AL TOTALE, MOSTRA L'INCREMENTO DELLE PAGINE*@
+                        {
+                            <li class="@(pg == Model.PageIndex ? "active" : "")">
+                                <a class="btn btn-default bgcol" asp-action="Index"
+                           asp-route-sortingforn="@ViewData["CurrentSort"]"
+                           asp-route-currentFilter="@ViewData["Getforndetails"]"
+                           asp-route-pageNumber="@pg">
+                                    @pg
+                                </a>
+                            </li>
+                        }
+                        @*PAGINE SUCCESSIVE*@
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortingforn="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           asp-route-currentFilter="@ViewData["Getforndetails"]"
+                           class="Arrows btn btn-default @nextDisabled">
+                                <img class="Arrows" src="/img/2Next.png">
+                            </a>
+                        </li>
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortingforn="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.TotalPages)"
+                           asp-route-currentFilter="@ViewData["Getforndetails"]"
+                           class="Arrows btn btn-default @nextDisabled">
+                                <img class="Arrows" src="/img/1End.png">
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</body>

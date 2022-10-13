@@ -1,0 +1,75 @@
+﻿@using ProjectWorkDemo.Models
+@model ProjectWorkDemo.Models.Utente
+
+@{
+    ViewData["Title"] = "DetailsUser";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Dettagli Utente</title>
+</head>
+
+<body>
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" asp-action="CreateForn">
+@*            <div asp-validation-summary="All"></div>
+            <div class="form-field">
+                <label asp-for="NomeUtente"></label>
+                <label asp-for="IdUtente" />
+                <span asp-validation-for="NomeUtente"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Indirizzo"></label>
+                <label asp-for="IdIndirizzo" />
+                <span asp-validation-for="Indirizzo"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Telefono"></label>
+                <label asp-for="IdTelefono" />
+                <span asp-validation-for="Telefono"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="PIva"></label>
+                <label asp-for="IdPIva" />
+                <span asp-validation-for="PIva"></span>
+            </div>*@
+@*             <div class="form-field">
+                <label asp-for="CatInterventoID"></label>
+                <select asp-for="CatInterventoID" asp-items="">
+                    <option selected="selected" value="">Select</option>
+                </select>
+                <span asp-validation-for="CatInterventoID"></span>
+            </div>*@
+            <div class="form-field">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+    <!--Sta roba qua sotto serve?-->
+
+    <h1>DetailsUser</h1>
+
+<div>
+    <h4>Utente</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+

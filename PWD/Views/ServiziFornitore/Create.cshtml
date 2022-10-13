@@ -1,0 +1,48 @@
+﻿@model ProjectWorkDemo.Models.ServiziFornitore
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>@sharedResource["CreaServizio"]</h1>
+        <div class="row">
+            <form class="from" asp-action="Create">
+                <div class="formCenter">
+                    <div class="btl">
+                        <a class="nav-link-back" asp-controller="Fornitori" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdFornitori" class="control-label">@sharedResource["NomeDitta"]</label><br>
+                        <label asp-for="IdFornitori" class="control-label" style="background-color:white; color:black">@ViewBag.NomeDitta</label>
+                        <input asp-for="IdFornitori" class="form-control" value="@ViewBag.IdFornitori" readonly hidden />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IdTipoForn" class="control-label">@sharedResource["Servizio"]</label>
+                        <select asp-for="IdTipoForn" class="form-control" asp-items="ViewBag.IdTipoForn"></select>
+                    </div>
+                    <div class="form-group">
+                        <font color="red">@ViewBag.ServizioExist</font>
+                    </div>
+                    <div class="form-submit">
+                        <input type="submit" value="@sharedResource["Crea"]" class="btn-submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

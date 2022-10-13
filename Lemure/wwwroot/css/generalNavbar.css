@@ -1,0 +1,1073 @@
+﻿
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 13px;
+}
+
+header, footer {
+    background-color: #d3ef8b;
+}
+
+img.imgSize {
+    width: 20vh;
+    cursor: pointer;
+}
+
+img.logo1 {
+    margin: 30px 0 30px 0;
+}
+
+img.logo2 {
+    margin: 10px 0 10px 0;
+}
+
+a {
+    color: #414141;
+}
+
+.header {
+    box-shadow: 1px 1px 4px 0 rgba(0, 0, 0, .3);
+    position: fixed;
+    height: 20vh;
+    width: 100%;
+    z-index: 1;
+    /*align-items: flex-end;
+    padding: 20px 1%;*/
+
+}
+
+    .header ul {
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: #d3ef8b;
+    }
+    .header ul li {
+
+    }
+
+    .header ul a {
+        display: block;
+        padding: 20px;
+        text-decoration: none;
+    }
+
+        .header ul a:hover {
+            border-radius: 40px;
+            box-shadow: 0 2px 0 0 rgba(0, 0, 0, .3);
+            background-color: #c9f161;
+        }
+
+    .header .logo11 {
+        float: left;
+        /*font-size: 25px; --In caso di logo scritto*/
+        padding: 0 20px;
+    }
+
+    .header .logo21 {
+        float: right;
+        /*font-size: 25px; --In caso di logo scritto*/
+        padding: 0 0;
+    }
+
+    .header .menu {
+        clear: both;
+        max-height: 0;
+        transition: max-height .2s ease-out;
+    }
+
+    .header .menu-icon {
+        padding: 28px 20px;
+        position: relative;
+        float: right;
+        cursor: pointer;
+    }
+
+        .header .menu-icon .nav-icon {
+            background-color: #414141;
+            display: block;
+            width: 18px;
+            height: 2px;
+            position: relative;
+            transition: background-color .2s ease-out;
+        }
+
+            .header .menu-icon .nav-icon::before,
+            .header .menu-icon .nav-icon::after {
+                background-color: #414141;
+                content: "";
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                transition: all .2s ease-out;
+            }
+
+            .header .menu-icon .nav-icon::before {
+                top: 7px;
+            }
+
+            .header .menu-icon .nav-icon::after {
+                bottom: 7px;
+            }
+
+    .header .menu-btn {
+        display: none;
+    }
+
+        .header .menu-btn:checked ~ .menu {
+            max-height: 280px;
+        }
+
+        .header .menu-btn:checked ~ .menu-icon .nav-icon {
+            background-color: transparent;
+        }
+
+            .header .menu-btn:checked ~ .menu-icon .nav-icon::before {
+                transform: rotate(-45deg);
+                top: 0;
+            }
+
+            .header .menu-btn:checked ~ .menu-icon .nav-icon::after {
+                transform: rotate(45deg);
+                top: 0;
+            }
+
+
+
+
+
+
+/*li, a, button {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: black;
+    text-decoration: none;
+}
+
+.Links {
+    list-style: none;
+    display: flex;
+    align-items: flex-start;*/
+    /*border: 1px solid red;*/
+/*}
+
+    .Links li {
+        display: inline-block;
+        padding: 0px 15px;
+    }
+
+    .Links a {
+        transition: all 0.3s ease 0s;
+    }
+
+        .Links a:hover {
+            color: red;
+        }
+*/
+
+
+
+.push {
+    height: 7vh;
+    position: sticky;
+    bottom: 0;
+    /*border: 3px solid orange;*/
+}
+
+footer {
+    height: 7vh;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+    footer div.footBar {
+        display: block;
+        text-align: center;
+        line-height: 7vh;
+        text-decoration: none;
+        color: #f3fade;
+    }
+
+        footer div.footBar p {
+            text-decoration: none;
+            color: #51d700;
+        }
+
+        footer div.footBar a {
+            text-decoration: none;
+            color: #50aa00;
+        }
+
+    footer div a:hover /*footer div.footBar:hover*/ {
+        /*background-color: #51d700;*/
+        color: #f3fade;
+        text-decoration: underline;
+    }
+
+    footer div a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    footer div:active, footer div a:active {
+        color: #f3faee;
+        cursor: grabbing;
+    }
+
+/*border: 1px solid red;*/
+
+@media (min-width: 1024px) {
+
+    img.logo2 {
+        margin: -10px 0 10px 0;
+    }
+
+    .header ul {
+        margin: -50px 0 0 0;
+        padding: 0;
+        list-style: none;
+        overflow: hidden;
+        background-color: transparent;
+    }
+
+        .header ul li {
+        }
+
+        .header ul a {
+            display: block;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.7s ease 0s;
+        }
+
+            .header ul a:hover {
+                border-radius: unset;
+                background-color: unset;
+                color: #51d700;
+                font-size: 13px;
+            }
+
+
+
+
+
+
+    .header li {
+        float: left;
+    }
+
+        .header li a {
+            padding: 20px 30px;
+        }
+
+    .header .menu {
+        clear: both;
+        float: right;
+        max-height: none;
+    }
+
+    .header .menu-icon {
+        display: none;
+    }
+}
+
+/*@media (min-width: 1280px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+
+    }
+
+    body {
+        height: 100%;
+        min-width: 1280px;
+        font-size: 12px;
+    }
+
+    header {
+        height: 30vh;
+        min-width: 1280px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 30px 1%;*/
+        /*border: 1px solid blue;*/
+    /*}*/
+
+        /*header :nth-child(2n+2) {
+            display: flex;
+            align-items: flex-end;
+        }*/
+
+    /*header, footer {
+        background-color: #d3ef8b;
+    }
+
+
+
+    nav {
+        display: flex;
+        align-items: flex-end;
+    }*/
+
+    /*header div.navBar {
+    display: block;
+    text-align: left;
+    line-height: 30vh;
+    text-decoration: none;
+    border: 1px solid red;
+}*/
+
+    /*li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        display: flex;
+        align-items: flex-start;*/
+        /*border: 1px solid red;*/
+    /*}
+
+        .Links li {
+            display: inline;
+            padding: 0px 30px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 40vh;
+        cursor: pointer;
+    }
+
+    img.logo1 {
+        margin: 0 0 52px 0;
+    }
+
+    img.logo2 {*/
+        /*Da Fare*/
+    /*}
+
+
+
+    .push {
+        height: 7vh;
+        position: sticky;
+        bottom: 0;*/
+        /*border: 3px solid orange;*/
+    /*}
+
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover*/ /*footer div.footBar:hover*/ /*{*/
+            /*background-color: #51d700;*/
+            /*color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }*/
+
+    /*border: 1px solid red;*/
+/*}
+
+@media (min-width: 1920px) {
+    body {
+        height: 100%;
+        min-width: 1920px;
+        font-size: 24px;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    a.privacy, p.cc {
+        font-size: 20px;
+    }
+    
+    img.logo1 {
+        margin: 0 0 50px 0;
+    }
+
+    img.logo2 {
+        margin: 0 0 -2px 0;
+    }
+}
+
+
+
+@media (min-width: 820px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100%;
+        min-width: 820px;
+        font-size: 13px;
+    }
+
+    header {
+        height: 15vh;
+        min-width: 820px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 20px 1%;*/
+        /*border: 1px solid blue;*/
+    /*}
+
+    header, footer {
+        background-color: #d3ef8b;
+    }
+
+    li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        display: flex;
+        align-items: flex-start;*/
+        /*border: 1px solid red;*/
+    /*}
+
+        .Links li {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 15vh;
+        cursor: pointer;
+    }
+
+    img.logo1 {
+        margin: 0 0 30px 0;
+    }
+
+    img.logo2 {
+        margin: 0 0 10px 0;
+    }
+
+    .push {
+        height: 7vh;
+        position: sticky;
+        bottom: 0;*/
+        /*border: 3px solid orange;*/
+    /*}
+    
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover footer div.footBar:hover {
+            background-color: #51d700;
+            color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }
+}
+
+@media (min-width: 768px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100%;
+        min-width: 768px;
+        font-size: 13px;
+    }
+
+    header {
+        height: 15vh;
+        min-width: 768px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 20px 1%;*/
+        /*border: 1px solid blue;*/
+    /*}
+
+    header, footer {
+        background-color: #d3ef8b;
+    }
+
+    li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        display: flex;
+        align-items: flex-start;*/
+        /*border: 1px solid red;*/
+    /*}
+
+        .Links li {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 15vh;
+        cursor: pointer;
+    }
+
+    img.logo1 {
+        margin: 0 0 30px 0;
+    }
+
+    img.logo2 {
+        margin: 0 0 10px 0;
+    }
+
+
+
+    .push {
+        height: 7vh;
+        position: sticky;
+        bottom: 0;*/
+        /*border: 3px solid orange;*/
+    /*}
+
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover footer div.footBar:hover {
+            background-color: #51d700;
+            color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }
+}
+
+@media (min-width: 428px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100%;
+        min-width: 428px;
+        font-size: 10px;
+    }
+
+    header {
+        height: 15vh;
+        min-width: 428px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 20px 1%;*/
+        /*border: 1px solid blue;*/
+    /*}
+
+    header, footer {
+        background-color: #d3ef8b;
+    }
+
+    li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        display: flex;
+        align-items: flex-start;*/
+        /*border: 1px solid red;*/
+    /*}
+
+        .Links li {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 15vh;
+        cursor: pointer;
+    }
+
+    img.logo1 {
+        margin: 0 0 30px 0;
+    }
+
+    img.logo2 {
+        margin: 0 0 10px 0;
+    }
+
+
+
+    .push {
+        height: 7vh;
+        position: sticky;
+        bottom: 0;*/
+        /*border: 3px solid orange;*/
+    /*}
+
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover footer div.footBar:hover {
+            background-color: #51d700;
+            color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }
+}
+
+@media (min-width: 390px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100%;
+        min-width: 390px;
+        font-size: 13px;
+    }
+
+    header {
+        height: 15vh;
+        min-width: 390px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 20px 1%;*/
+        /*border: 1px solid blue;*/
+    /*}
+
+    header, footer {
+        background-color: #d3ef8b;
+    }
+
+    li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        display: flex;
+        align-items: flex-start;*/
+        /*border: 1px solid red;*/
+    /*}
+
+        .Links li {
+            display: inline-block;
+            padding: 0px 15px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 15vh;
+        cursor: pointer;
+    }
+
+    img.logo1 {
+        margin: 0 0 30px 0;
+    }
+
+    img.logo2 {
+        margin: 0 0 10px 0;
+    }
+
+
+
+    .push {
+        height: 7vh;
+        position: sticky;
+        bottom: 0;*/
+        /*border: 3px solid orange;*/
+    /*}
+
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover footer div.footBar:hover {
+            background-color: #51d700;
+            color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*@media (min-width: 768px) {
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+    }
+
+    body {
+        min-height: 720px;
+        min-width: 1280px;
+    }
+
+    header {
+        height: 30vh;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 30px 1%;
+        border: 1px solid blue;
+    }
+
+        header :nth-child(2n+2) {
+            display: flex;
+            align-items: flex-end;
+        }
+
+    header, footer {
+        background-color: #d3ef8b;
+    }
+
+
+
+    nav {
+        display: flex;
+        align-items: flex-end;
+    }*/
+
+    /*header div.navBar {
+    display: block;
+    text-align: left;
+    line-height: 30vh;
+    text-decoration: none;
+    border: 1px solid red;
+}*/
+
+    /*li, a, button {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: black;
+        text-decoration: none;
+    }
+
+    .Links {
+        list-style: none;
+        border: 1px solid red;
+    }
+
+        .Links li {
+            display: inline-block;
+            padding: 0px 30px;
+        }
+
+        .Links a {
+            transition: all 0.3s ease 0s;
+        }
+
+            .Links a:hover {
+                color: red;
+            }
+
+    img.imgSize {
+        width: 30vh;
+        cursor: pointer;
+    }
+
+
+
+    .push {
+        height: 7vh;
+        position: fixed;
+        bottom: 0;
+    }
+
+    footer {
+        height: 7vh;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+        footer div.footBar {
+            display: block;
+            text-align: center;
+            line-height: 7vh;
+            text-decoration: none;
+            color: #f3fade;
+        }
+
+            footer div.footBar p {
+                text-decoration: none;
+                color: #51d700;
+            }
+
+            footer div.footBar a {
+                text-decoration: none;
+                color: #50aa00;
+            }
+
+        footer div a:hover*/ /*footer div.footBar:hover*/ /*{*/
+    /*background-color: #51d700;*/
+    /*color: #f3fade;
+            text-decoration: underline;
+        }
+
+        footer div a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        footer div:active, footer div a:active {
+            color: #f3faee;
+            cursor: grabbing;
+        }*/
+
+    /*border: 1px solid red;*/
+    /*}*/

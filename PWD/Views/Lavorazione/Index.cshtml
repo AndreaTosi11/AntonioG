@@ -1,0 +1,198 @@
+﻿@model PaginatedList<ProjectWorkDemo.Models.Lavorazione>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["GestioneLavorazione"]</h1>
+        <div class="table-responsive">
+            <form class="form-search" method="get" asp-action="Index">
+                <input type="search" placeholder="@sharedResource["RicercaPerTarga"]" class="src-submit" value="@ViewData["Getlavdetails"]" name="Lavsearch" style="width:500px" />
+                <input type="submit" value="@sharedResource["Invia"]" class="btn-submit" />
+                <a class="nav-link-back" asp-action="Index">@sharedResource["OttieniOgniLavorazione"]</a>
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        @*                        <th>
+                        @Html.DisplayNameFor(model => model.IdLavorazione)
+                        </th>*@
+                        <th class="n">
+                            <a asp-action="Index" asp-route-sortinglav="@ViewData["Lavtarga"]" asp-route-currentFilter="@ViewData["Getlavdetails"]">@sharedResource["Targa"]</a>
+                        </th>
+                        <th>
+                            @sharedResource["NomeDitta"]
+                        </th>
+                        <th>
+                            @sharedResource["CodiceIdentificativo"]
+                        </th>
+                        <th class="n">
+                            <a asp-action="Index" asp-route-sortinglav="@ViewData["Lavdate"]" asp-route-currentFilter="@ViewData["Getlavdetails"]">@sharedResource["CodiceIdentificativo"]</a>
+                        </th>
+                        <th>
+                            @sharedResource["CostoTotaleDellaLavorazione"]
+                        </th>
+                        <th>
+                            @sharedResource["Garanzia"]
+                        </th>
+                        <th>
+                            @sharedResource["CodiceGaranzia"]
+                        </th>
+                        <th class="new">
+                            <p>
+                                <a asp-action="Create">@sharedResource["Crea"]</a>
+                            </p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @*                            <td>
+                        @Html.DisplayFor(modelItem => item.IdLavorazione)
+                        </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdMezzoNavigation.Targa)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdFornitoriNavigation.NomeDitta)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CodiceIdentificativo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DataLavorazione)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CostoTotaleLavorazione) €
+                            </td>
+                            <td>
+                                @if (item.Garanzia == true)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Garanzia)
+                                    <style>
+                                        input[type=checkbox]:checked {
+                                            outline: 2px solid #dec709;
+                                            width: 15px;
+                                            height: 15px;
+                                            color: #dec709;
+                                        }
+                                    </style>
+                                }
+                                else
+                                {
+                                    @Html.DisplayFor(modelItem => item.Garanzia)
+                                }
+                            </td>
+                            <td>
+                                @if (item.NumGaranzia != null)
+                                {
+                                    @Html.DisplayFor(modelItem => item.NumGaranzia)
+                                }
+                                else
+                                {
+                                    <p class="x">X</p>
+                                    <style>
+                                        p.x {
+                                            color: #dec709;
+                                            font-size: 16px;
+                                        }
+                                    </style>
+                                }
+                            </td>
+                            <td>
+                                @*<a asp-controller="Fornitori" asp-action="ListaFornitorePerId" asp-route-id="@item.IdFornitori">Fornitori</a> |*@
+
+                                <a asp-action="Edit" asp-route-id="@item.IdLavorazione">@sharedResource["Modifica"]</a>
+                                <a asp-action="Details" asp-route-id="@item.IdLavorazione">@sharedResource["Informazioni"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdLavorazione">@sharedResource["Cancella"]</a> ||
+                                <a asp-controller="Dettaglio" asp-action="Index" asp-route-id="@item.IdLavorazione">@sharedResource["Dettaglio"]</a>
+                                <a asp-controller="Dettaglio" asp-action="Create" asp-route-id="@item.IdLavorazione">@sharedResource["NuovoDettaglio"]</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+                    <br />
+
+            <div class="container">
+                @if (Model.TotalPages > 0)
+                {
+                    <ul class="pagination justify-content-center">
+                        @{
+                            var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                        }
+
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortinglav="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="1"
+                           asp-route-currentFilter="@ViewData["Getlavdetails"]"
+                           class="Arrows btn btn-default @prevDisabled">
+                                 <img class="Arrows" src="/img/3Start.png">
+                            </a>
+                        </li>
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortinglav="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex - 1)"
+                           asp-route-currentFilter="@ViewData["Getlavdetails"]"
+                           class="Arrows btn btn-default @prevDisabled">
+                                <img class="Arrows" src="/img/4Prev.png">
+                            </a>
+                        </li>
+
+
+                        @for (var pg = Model.StartPage; pg <= Model.TotalPages; pg++)
+                        {
+                            <li class="@(pg == Model.PageIndex ? "active" : "")">
+                                <a class="btn btn-default" asp-action="Index"
+                           asp-route-sortinglav="@ViewData["CurrentSort"]"
+                           asp-route-currentFilter="@ViewData["Getlavdetails"]"
+                           asp-route-pageNumber="@pg">
+                                    @pg
+                                </a>
+                            </li>
+                        }
+
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortinglav="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.PageIndex + 1)"
+                           asp-route-currentFilter="@ViewData["Getlavdetails"]"
+                           class="Arrows btn btn-default @nextDisabled">
+                                <img class="Arrows" src="/img/2Next.png">
+                            </a>
+                        </li>
+                        <li class="Arrows">
+                            <a asp-action="Index"
+                           asp-route-sortinglav="@ViewData["CurrentSort"]"
+                           asp-route-pageNumber="@(Model.TotalPages)"
+                           asp-route-currentFilter="@ViewData["Getlavdetails"]"
+                           class="Arrows btn btn-default @nextDisabled">
+                                <img class="Arrows" src="/img/1End.png">
+                            </a>
+                        </li>
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+
+
+

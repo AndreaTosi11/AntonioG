@@ -1,0 +1,42 @@
+﻿@page
+@model PersonalDataModel
+@{
+    ViewData["Title"] = "Personal Data";
+    ViewData["ActivePage"] = ManageNavPages.PersonalData;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="form-group">
+        <p>@sharedResource["Il tuo account contiene dati personali fornitoci. Questa pagina ti permette di"] <strong class="dngr">@sharedResource["Scaricare"]</strong> @sharedResource["O"]  <strong class="dngr">@sharedResource["Cancellare"]</strong> @sharedResource["that data."]</p>
+        <p>
+            <strong class="dngr">@sharedResource["Cancellando questi dati, rimuoverai permanentemente il tuo account, una volta presa questa decisione, non si puó piú tornare indietro"]</strong>
+        </p>
+        </div>
+        <form id="download-data" asp-page="DownloadPersonalData" method="post">
+            <div class="formCenter">
+                <button class="btn-submit" type="submit">@sharedResource["Scaricare"]</button>
+            </div>
+        </form>
+        <div class="form-group">
+        <p>
+            <a id="delete" asp-page="DeletePersonalData" class="btn-submit-dngr">@sharedResource["Cancellare"]</a>
+        </p>
+        </div>
+    </div>
+</div>
+</body>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

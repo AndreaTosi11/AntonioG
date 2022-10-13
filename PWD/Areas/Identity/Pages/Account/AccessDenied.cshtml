@@ -1,0 +1,20 @@
+﻿@page
+@model AccessDeniedModel
+@{
+	ViewData["Title"] = "Access denied";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/X.css" />
+	<link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+	<div class="container">
+		<h2>@sharedResource["X403"]</h2>
+		<h1>@sharedResource["AccessoNegato"]</h1>
+		<p class="p">@sharedResource["NonHaiAccessoAQuestaRisorsa"]</p>
+	</div>
+</body>

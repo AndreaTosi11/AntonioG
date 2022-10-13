@@ -1,0 +1,137 @@
+﻿@model PaginatedList<ProjectWorkDemo.Models.Mezzo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>@sharedResource["GestioneMezzi"]</h1>
+        <form class="form-search" method="get" asp-action="Index">
+            <input type="search" placeholder="@sharedResource["RicercaPerModelloETarga"]" class="src-submit" value="@ViewData["Getmezzodetails"]" name="Mezzosearch" style="width:500px" />
+            <input type="submit" value="@sharedResource["Invia"]" class="btn-submit" />
+            <a class="nav-link-back" asp-action="Index">@sharedResource["OttieniOgniMezzo"]</a>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="idfn">
+                        @sharedResource["Produttore"]
+                    </th>
+                    <th class="n">
+                        <a asp-action="Index" asp-route-sortingmezzo="@ViewData["Mezziname"]" asp-route-currentFilter="@ViewData["Getmezzodetails"]">@sharedResource["Modello"]</a>
+                    </th>
+                    <th class="l">
+                        @sharedResource["Targa"]
+                    </th>
+                    <th class="c">
+                        <a asp-action="Index" asp-route-sortingmezzo="@ViewData["Mezzidate"]" asp-route-currentFilter="@ViewData["Getmezzodetails"]">@sharedResource["DataImmatricolazione"]</a>
+                    </th>
+                    <th class="new">
+                        <p>
+                            <a asp-action="Create">@sharedResource["CreaNuovoMezzo"]</a>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="idfn">
+                            @Html.DisplayFor(modelItem => item.IdProduttoreNavigation.Denominazione)
+                        </td>
+                        <td class="n">
+                            @Html.DisplayFor(modelItem => item.TipoAuto)
+                        </td>
+                        <td class="l">
+                            @Html.DisplayFor(modelItem => item.Targa)
+                        </td>
+                        <td class="c">
+                            @Html.DisplayFor(modelItem => item.DataImmatricolazione)
+                        </td>
+
+                        <td class="new">
+                            <a asp-controller="Lavorazione" asp-action="IndexSelectByTarga" asp-route-id="@item.IdMezzo">Lavorazione</a>
+                            <a asp-action="Edit" asp-route-id="@item.IdMezzo">@sharedResource["Modifica"]</a>
+                            <a asp-action="Details" asp-route-id="@item.IdMezzo">@sharedResource["Informazioni"]</a>
+                            <a asp-action="Delete" asp-route-id="@item.IdMezzo">@sharedResource["Cancella"]</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+                <br />
+
+        <div class="container">
+            @if (Model.TotalPages > 0)
+            {
+                <ul class="pagination justify-content-center">
+                    @{
+                        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                    }
+
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingmezzo="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="1"
+                       asp-route-currentFilter="@ViewData["Getmezzodetails"]"
+                       class="Arrows btn btn-default @prevDisabled">
+                            <img class="Arrows" src="/img/3Start.png">
+                        </a>
+                    </li>
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingmezzo="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       asp-route-currentFilter="@ViewData["Getmezzodetails"]"
+                       class="Arrows btn btn-default @prevDisabled">
+                            <img class="Arrows" src="/img/4Prev.png">
+                        </a>
+                    </li>
+
+                    @for (var pg = Model.StartPage; pg <= Model.TotalPages; pg++)
+                    {
+                        <li class="@(pg == Model.PageIndex ? "active" : "")">
+                            <a class="btn btn-default" asp-action="Index"
+                       asp-route-sortingmezzo="@ViewData["CurrentSort"]"
+                       asp-route-currentFilter="@ViewData["Getmezzodetails"]"
+                       asp-route-pageNumber="@pg">
+                                @pg
+                            </a>
+                        </li>
+                    }
+
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingmezzo="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       asp-route-currentFilter="@ViewData["Getmezzodetails"]"
+                       class="Arrows btn btn-default @nextDisabled">
+                            <img class="Arrows" src="/img/2Next.png">
+                        </a>
+                    </li>
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingmezzo="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.TotalPages)"
+                       asp-route-currentFilter="@ViewData["Getmezzodetails"]"
+                       class="Arrows btn btn-default @nextDisabled">
+                            <img class="Arrows" src="/img/1End.png">
+                        </a>
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+</body>

@@ -1,0 +1,74 @@
+﻿@using ProjectWorkDemo.Models
+@model ProjectWorkDemo.Models.Utente
+
+@{
+    ViewData["Title"] = "CreateUser";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Crea Utente</title>
+</head>
+
+<body>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+    <div class="container">
+        <h1 class="main-titel">Add a Fornitore</h1>
+        <form method="post" enctype="multipart/form-data" asp-action="CreateForn">
+            <div asp-validation-summary="All"></div>
+            @*<div class="form-field">
+                <label asp-for="NomeUtente"></label>
+                <input asp-for="NomeUtente" />
+                <span asp-validation-for="NomeUtente"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Indirizzo"></label>
+                <input asp-for="Indirizzo" />
+                <span asp-validation-for="Indirizzo"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="Telefono"></label>
+                <input asp-for="Telefono" />
+                <span asp-validation-for="Telefono"></span>
+            </div>
+            <div class="form-field">
+                <label asp-for="PIva"></label>
+                <input asp-for="PIva" />
+                <span asp-validation-for="PIva"></span>
+            </div>*@
+@*             <div class="form-field">
+                <label asp-for="CatInterventoID"></label>
+                <select asp-for="CatInterventoID" asp-items="">
+                    <option selected="selected" value="">Select</option>
+                </select>
+                <span asp-validation-for="CatInterventoID"></span>
+            </div>*@
+            <div class="form-field">
+                <input type="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+    <!--Non Sono sicuro di quello che dovete fare con sto pezzo di codice-->
+    <div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

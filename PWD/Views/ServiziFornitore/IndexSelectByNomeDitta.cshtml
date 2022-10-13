@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ProjectWorkDemo.Models.ServiziFornitore>
+
+@{
+    ViewData["Title"] = "IndexSelectByNomeDitta";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["GestioneServizioDitta"]</h1>
+        <div class="table-responsive">
+            <div class="btl">
+                <a class="nav-link-back" asp-controller="Fornitori" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+                <br></br>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="c">
+                            @sharedResource["NomeDitta"]
+                        </th>
+                        <th class="t">
+                            @sharedResource["Descrizione"]
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="c">
+                                @Html.DisplayFor(modelItem => item.IdFornitoriNavigation.NomeDitta)
+                            </td>
+                            <td class="t">
+                                @Html.DisplayFor(modelItem => item.IdTipoFornNavigation.Descrizione)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.IdServizio">@sharedResource["Modifica"]</a>
+                                <a asp-action="Details" asp-route-id="@item.IdServizio">@sharedResource["Informazioni"]</a>
+                                <a asp-action="Delete" asp-route-id="@item.IdServizio">@sharedResource["Cancella"]</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

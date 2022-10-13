@@ -1,0 +1,90 @@
+﻿@model ProjectWorkDemo.Models.Fornitori
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="/css/map.css" />
+    <script type="module" src="/js/mapCreate.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>@sharedResource["ModificaFornitore"]</h1>
+        <div class="row">
+            <form class="from" asp-action="Edit">
+                <input type="hidden" asp-for="IdFornitori" />
+                <div class="formCenter">
+                    <div class="btl">
+                        <a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+                    </div>
+                    @*        <div class="form-group">
+                    <label asp-for="IdTipoForn" class="control-label">Tipologia Fornitore</label>
+                    <select asp-for="IdTipoForn" class="form-control" asp-items="ViewBag.IdTipoForn"></select>
+                    <span asp-validation-for="IdTipoForn" class="text-danger"></span>
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="NomeDitta" class="control-label">@sharedResource["NomeDitta"]</label>
+                        <input asp-for="NomeDitta" class="form-control" />
+                        <span asp-validation-for="NomeDitta" class="text-danger"></span>
+                    </div>
+                      <div class="form-group">
+                        <label asp-for="UserId" class="control-label"></label>
+                        <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DataCreazione" class="control-label">@sharedResource["DataDiCreazione"]</label>
+                        <input asp-for="DataCreazione" class="form-control" />
+                        <span asp-validation-for="DataCreazione" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Telefono" class="control-label">@sharedResource["Telefono"]</label>
+                        <input asp-for="Telefono" class="form-control" />
+                        <span asp-validation-for="Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Indirizzo" class="control-label">@sharedResource["Indirizzo"]</label>
+                        <input asp-for="Indirizzo" class="form-control" />
+                        <span asp-validation-for="Indirizzo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Piva" class="control-label">@sharedResource["PartitaIVA"]</label>
+                        <input asp-for="Piva" class="form-control" />
+                        <span asp-validation-for="Piva" class="text-danger"></span>
+                    </div>
+                    @*            <div class="form-group">
+                    @Html.DisplayNameFor(model => model.Lavorazioni) <input class="form-check-input" asp-for="Lavorazioni" />
+                    </div>*@
+                    <div class="form-group">
+                        <label asp-for="Latitudine" class="control-label">@sharedResource["Latitudine"]</label>
+                        <input asp-for="Latitudine" class="form-control" id="Latid" readonly />
+                        <span asp-validation-for="Latitudine" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Longitudine" class="control-label">@sharedResource["Longitudine"]</label>
+                        <input asp-for="Longitudine" class="form-control" id="Lngid" readonly />
+                        <span asp-validation-for="Longitudine" class="text-danger"></span>
+                    </div>
+                    <div class="formMaps" id="map"></div>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFTXnc0ewkLNyjLZKYOq288Gan9GoPlIc&callback=initMap&v=weekly"
+                            defer></script>
+                    <div class="form-submit">
+                        <input type="submit" value="@sharedResource["Modifica"]" class="btn-submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

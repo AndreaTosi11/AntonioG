@@ -1,0 +1,131 @@
+﻿
+/* All */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basics */
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-right: 0px;
+    background-color: #f3f3f3;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    background-image: url("/img/NeroPietra.jpg");
+    /*    background-image: url("/img/DriftJL.png");
+    background-color: white;
+    height: 1920px;
+    width: 1080px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;*/
+}
+
+.container {
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 30px;
+    margin-right: 0px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    /*background-image: url("/img/DriftJL.png");
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;*/
+}
+
+h1 {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    margin: 0;
+    color: #dec709;
+    font-size: 30px;
+    text-align: center;
+    pointer-events: none;
+}
+
+/* Navigation Button Alias NavBtn */
+
+div.AnimationBatMobile {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+}
+
+img.BMR {
+    width: 200px;
+    height: 80px;
+    animation: left-to-right 5s ease forwards infinite;
+
+}
+
+/* The animation code */
+@keyframes left-to-right {
+    from {
+        transform: translateX(-250px);
+    }
+
+    to {
+        transform: translateX(690%);
+        opacity: 0%;
+    }
+}
+
+
+
+div.bodybtn {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    text-decoration: none !important;
+    background-color: #2f2f2f !important;
+    color: #dec709 !important;
+    border: #fff solid 3px !important;
+    border-radius: 10px !important;
+}
+
+div button.btnFor {
+    width: 30%;
+    height: 50px;
+    margin: 10px;
+    display: block;
+    text-align: center;
+}
+
+.btnFor:hover {
+    text-decoration: underline;
+    border: #dec709 solid 3px;
+    border-radius: 10px;
+}
+
+.btnFor:active {
+    background-color: #bb0000;
+    color: #2f2f2f;
+    border: #2f2f2f solid 3px;
+    border-radius: 10px;
+}

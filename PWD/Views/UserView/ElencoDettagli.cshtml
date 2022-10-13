@@ -1,0 +1,91 @@
+﻿@model IEnumerable<ProjectWorkDemo.Models.Dettaglio>
+
+@{
+    ViewData["Title"] = "IndexFromMezzi";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["Dettagli"]</h1>
+        <div class="table-responsive">
+            <form class="form-search" method="get" asp-action="Index">               
+                <a class="nav-link-back" asp-controller="UserView" asp-action="ElencoLavorazioni">@sharedResource["TornaAllaLista"]</a>
+      
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+            <th>
+                @sharedResource["DescrizioneDellaLavorazione"]
+            </th>
+            <th>
+                @sharedResource["DataInizioLavoro"]
+            </th>
+            <th>
+                @sharedResource["DataFineLavoro"]
+            </th>
+            <th>
+                @sharedResource["NomeLavoratore"]
+            </th>
+            <th>
+                @sharedResource["CognomeLavoratore"]
+            </th>
+            <th>
+                @sharedResource["CostoNetto"]
+            </th>
+            <th>
+                @sharedResource["IVA"]
+            </th>
+            <th>
+                @sharedResource["CostoTotaleDelDettaglio"]
+            </th>
+@*            <th>
+                @Html.DisplayNameFor(model => model.IdLavorazioneNavigation.IdLavorazione)
+            </th>*@
+                  
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoLavorazione)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataInizioLavoro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataFineLavoro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeLavoratore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CognomeLavoratore)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoNetto) €
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Iva) % 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoTotDet) €
+            </td>                
+        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

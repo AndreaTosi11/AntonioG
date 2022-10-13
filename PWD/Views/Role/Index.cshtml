@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["List of Roles"]</h1>
+        <div class="table-responsive">
+            <form class="form-search" method="get" asp-action="Index">
+                <input type="search" placeholder="@sharedResource["Ricerca"]" class="src-submit" value="@ViewData["Getforndetails"]" name="Fornsearch" style="width:500px" />
+                <input type="submit" value="@sharedResource["Invia"]" class="btn-submit" />
+            </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="n">Id</th>
+                        <th class="c">Name</th>
+                        <th class="new">
+                            <p>
+                                <a asp-action="Create">@sharedResource["Create"]</a>
+                            </p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var role in Model)
+                    {
+                        <tr>
+                            <td class="n">@role.Id</td>
+                            <td class="c">@role.Name</td>
+                            <td class="new">
+                                <a asp-action="EditRole" asp-route-id="@role.Id">@sharedResource["Modifica"]</a>
+                                <a asp-action="Delete" asp-route-id="@role.Id">@sharedResource["Cancella"]</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>

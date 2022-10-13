@@ -1,0 +1,50 @@
+﻿@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@using Microsoft.AspNetCore.Identity
+@using ProjectWorkDemo.Areas.Identity.Data
+@{
+    ViewData["Title"] = "Home Page";
+}
+@inject SignInManager<ProjectWorkDemoUser> SignInManager
+@inject UserManager<ProjectWorkDemoUser> UserManager
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+    <link href="http://fonts.cdnfonts.com/css/justice-league" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="AnimationBatMobile">
+            <img class="BMR" id="BMR" src="/img/BatMobileRight.png" />
+        </div>
+        <div class="bodybtn">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                {
+                    <button class="btnFor" onclick="location.href='@Url.Action("Index", "Fornitori")'">@sharedResource["GestioneFornitori"]</button>
+                    <button class="btnFor" onclick="location.href='@Url.Action("Index", "Mezzo")'">@sharedResource["GestioneMezzi"]</button>
+                    <button class="btnFor" onclick="location.href='@Url.Action("Index", "Lavorazione")'">@sharedResource["GestioneLavorazioni"]</button>
+                    <button class="btnFor" onclick="location.href='@Url.Action("Index", "ServiziFornitore")'">@sharedResource["GestioneServizi"]</button>
+                }
+                else if ((await AuthorizationService.AuthorizeAsync(User, "UserRole")).Succeeded)
+                {
+                    <button class="btnFor" onclick="location.href='@Url.Action("AnagraficaFornitore", "UserView")'">Anagrafica Fornitore</button>
+                     <button class="btnFor" onclick="location.href='@Url.Action("ElencoLavorazioni", "UserView")'">Lavorazioni</button>
+                     <button class="btnFor" onclick="location.href='@Url.Action("ElencoAuto", "UserView")'">Mezzi</button>
+                   
+                }
+            }
+            else
+            {
+                <h1>@sharedResource["ACCEDIOISCRIVITIPERCONTINUARE"]</h1>
+            }
+        </div>
+    </div>
+</body>
+

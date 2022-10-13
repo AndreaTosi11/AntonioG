@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ProjectWorkDemo.Areas.Identity.Data
+
+@inject SignInManager<ProjectWorkDemoUser> SignInManager
+@inject UserManager<ProjectWorkDemoUser> UserManager
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Justice League</title>
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+<body>
+    <div class="logBar">
+        <ul class="logList">
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li class="nav-linktext-dark-L">
+                    <a class="navMA" asp-area="" asp-controller="Home" asp-action="Index"><img class="nav-linktext-dark" src="/img/JLtopLogo.png" alt="Justice League Logo"></a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    <form id="LoutForm" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                        <button type="submit" class="navMALout">Logout</button>
+                    </form>
+                </li>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                {
+                    <li class="nav-linktext-dark-R">
+                        <a class="navMA" id="register" asp-area="Identity" asp-page="/Account/Register">Sign-Up</a>
+                    </li>
+                }
+                @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                {
+                    <li class="nav-linktext-dark-R">
+                        <a class="navMA" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+                    </li>
+                }
+                <li class="nav-linktext-dark-R">
+                    <a id="manage" class="navMA" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    <a asp-controller="language" asp-action="change" asp-route-culture="it-IT">
+                        <img class="ban" src="~/img/ban-ita.png" alt="" title="">
+                    </a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    <a asp-controller="language" asp-action="change" asp-route-culture="en-US">
+                        <img class="ban" src="~/img/ban-eng.png" alt="" title="">
+                    </a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    Languages:
+                </li>
+            }
+            else
+            {
+                <li class="nav-linktext-dark-L">
+                    <a class="navMA" asp-area="" asp-controller="Home" asp-action="Index"><img class="nav-linktext-dark" src="/img/JLtopLogo.png" alt="Justice League Logo"></a>
+                </li>
+                @if ((await AuthorizationService.AuthorizeAsync(User, "RequireAdministratorRole")).Succeeded)
+                {
+                    <li class="nav-linktext-dark-R">
+                        <a class="navMA" id="register" asp-area="Identity" asp-page="/Account/Register">Sign-Up</a>
+                    </li>
+                }
+                <li class="nav-linktext-dark-R">
+                    <a class="navMA" id="login" asp-area="Identity" asp-page="/Account/Login">Log-in</a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    <a asp-controller="language" asp-action="change" asp-route-culture="it-IT">
+                        <img class="ban" src="~/img/ban-ita.png" alt="" title="">
+                    </a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    <a asp-controller="language" asp-action="change" asp-route-culture="en-US">
+                        <img class="ban" src="~/img/ban-eng.png" alt="" title="">
+                    </a>
+                </li>
+                <li class="nav-linktext-dark-R">
+                    Languages:
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>

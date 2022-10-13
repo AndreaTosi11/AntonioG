@@ -1,0 +1,65 @@
+﻿@model ProjectWorkDemo.Models.EditRoleViewModel
+
+@{
+	ViewData["Title"] = "EditRole";
+}
+
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+	<link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+	<div class="container">
+		<h1>@sharedResource["ModificaRuolo"]</h1>
+		<div class="row">
+			<form method="post" class="from">
+				<div class="formCenter">
+					<div class="btl">
+						<a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+					</div>
+					<div class="form-group">
+					<label asp-for="Id" class="col-sm-2 col-form-label">@sharedResource["ID"]</label>
+						<input asp-for="Id" disabled class="form-control">
+					</div>
+				<div class="form-group">
+					<label asp-for="RoleName" class="col-sm-2 col-form-label">@sharedResource["Ruolo"]</label>
+						<input asp-for="RoleName" class="form-control">
+						<span asp-validation-for="RoleName" class="text-danger"></span>
+					</div>
+				<div class="form-group">
+						<button type="submit" class="btn-submit">@sharedResource["Modifica"]</button>
+					</div>
+
+				<div class="form-group">
+						<h2>@sharedResource["UtentiConQuestoRuolo"]</h2>
+						@if (Model.Users.Any())
+						{
+							foreach (var user in Model.Users)
+							{
+								<h2 class="card-title">@user</h2>
+							}
+						}
+						else
+						{
+							<h2 class="card-title">@sharedResource["NessunAccountInQuestoRuoloAlMomento"]</h2>
+						}
+						<a asp-action="EditUsersInRole"
+						   asp-route-roleId="@Model.Id" class="btn-submit">
+							@sharedResource["AggiungiORimuoviGliUtentiDaQuestoRuolo"]
+						</a>
+					</div>
+					</div>
+			</form>
+		</div>
+	</div>
+</body>
+
+@section Scripts {
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+    }

@@ -1,0 +1,60 @@
+﻿@page
+@model EnableAuthenticatorModel
+@{
+    ViewData["Title"] = "Configure authenticator app";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>@sharedResource["Configura l'App di Autenticazione"]</h2>
+    <ol class="list">
+        <li>
+            <p>
+                @sharedResource["Scarica una app a due fattori di autenticazione come quella di -Google Authenticator- per"]
+                <a class="navMA" href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">iOS</a> @sharedResource["E"]
+                <a class="navMA" href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">Android</a>.
+            </p>
+        </li>
+        <br />
+        <li>
+            <p>@sharedResource["Scansiona il codice QR o inserisci la chiave"] <kbd>@Model.SharedKey</kbd> @sharedResource["nella tua app di autenticazione a due fattori. Gli spazi non contano."]</p>
+            <div id="qrCode"></div>
+            <div id="qrCodeData" data-url="@Model.AuthenticatorUri"></div>
+        </li>
+        <br />
+        <li>
+            <p>
+                @sharedResource["Una volta scansionato il codice QR o inserito la chiave sovrastante, la tua app di autenticazione a due fattori ti rilascerá un codice univoquo. Inserisci il codice nella casella sottostante."]
+            </p>
+            <br />
+        </li>
+    </ol>
+                <div class="row">
+                    <form class="form" id="send-code" method="post">
+                        <div class="formCenter">
+                            <div class="form-group">
+                            <label asp-for="Input.Code" class="control-label form-label">@sharedResource["CodiceDiVerifica"]</label>
+                            <input asp-for="Input.Code" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Input.Code" class="text-danger"></span>
+                            </div>
+                        <div class="form-submit">
+                            <button type="submit" class="btn-submit">@sharedResource["Verifica"]</button>
+                        </div>
+                        </div>
+                    </form>
+            </div>
+</div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

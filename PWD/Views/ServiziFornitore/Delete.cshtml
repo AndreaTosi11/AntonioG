@@ -1,0 +1,48 @@
+﻿@model ProjectWorkDemo.Models.ServiziFornitore
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/details-delete.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["CancellaServizio"]</h1>
+    <div class="form">
+        <div class="formCenter">
+        <div class="btl">
+            <a class="nav-link-back" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+        </div>
+        <div class="head-body">
+        <dl>
+        <dt class = "col-sm-2">
+            @sharedResource["NomeDitta"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdFornitoriNavigation.NomeDitta)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["Descrizione"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdTipoFornNavigation.Descrizione)
+        </dd>
+        </dl>
+        <p class="question">@sharedResource["SeiSicuroDiVolerCancellare?"]</p>
+        </div>
+        <div class="form-submit">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdServizio" />
+                <input type="submit" value="@sharedResource["Cancella"]" class="btn-submit" />
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+</body>

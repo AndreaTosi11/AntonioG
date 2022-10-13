@@ -1,0 +1,124 @@
+﻿@model PaginatedList<ProjectWorkDemo.Models.ServiziFornitore>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/list.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        @*        <img src="/img/DriftJL.png" />*@
+        <h1>@sharedResource["DettaglioServizi"]</h1>
+        <form class="form-search" method="get" asp-action="Index">
+            <input type="search" placeholder="@sharedResource["Ricerca"]" class="src-submit" value="@ViewData["Getservdetails"]" name="Servsearch" style="width:500px" />
+            <input type="submit" value="@sharedResource["Invia"]" class="btn-submit" />
+            <a class="nav-link-back" asp-action="Index">@sharedResource["OttieniOgniServizio"]</a>
+        </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="c">
+                        @sharedResource["NomeDitta"]
+                    </th>
+                    <th class="t">
+                        <a asp-action="Index" asp-route-sortingserv="@ViewData["Servizitype"]" asp-route-currentFilter="@ViewData["Getservdetails"]">@sharedResource["Servizio"]</a>
+                    </th>
+                    <th class="new">
+                        <p>
+                            @*<a asp-action="Create">Crea Servizio</a>*@
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="c">
+                            @Html.DisplayFor(modelItem => item.IdFornitoriNavigation.NomeDitta)
+                        </td>
+                        <td class="t">
+                            @Html.DisplayFor(modelItem => item.IdTipoFornNavigation.Descrizione)
+                        </td>
+                        <td class="new">
+                            @*   <a asp-action="Edit" asp-route-id="@item.IdServizio">Modifica</a>
+                        <a asp-action="Details" asp-route-id="@item.IdServizio">Info</a>
+                        <a asp-action="Delete" asp-route-id="@item.IdServizio">Cancella</a>*@
+                            <a asp-controller="Fornitori" asp-action="Details" asp-route-id="@item.IdFornitori"> @sharedResource["InformazioniSu"] @Html.DisplayFor(modelItem => item.IdFornitoriNavigation.NomeDitta)</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+
+        <div class="container">
+            @if (Model.TotalPages > 0)
+            {
+                <ul class="pagination justify-content-center">
+                    @{
+                        var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+                        var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+                    }
+
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingserv="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="1"
+                       asp-route-currentFilter="@ViewData["Getservdetails"]"
+                       class="Arrows btn btn-default @prevDisabled">
+                            <img class="Arrows" src="/img/3Start.png">
+                        </a>
+                    </li>
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingserv="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.PageIndex - 1)"
+                       asp-route-currentFilter="@ViewData["Getservdetails"]"
+                       class="Arrows btn btn-default @prevDisabled">
+                            <img class="Arrows" src="/img/4Prev.png">
+                        </a>
+                    </li>
+
+                    @for (var pg = Model.StartPage; pg <= Model.TotalPages; pg++)
+                    {
+                        <li class="@(pg == Model.PageIndex ? "active" : "")">
+                            <a class="btn btn-default" asp-action="Index"
+                       asp-route-sortingserv="@ViewData["CurrentSort"]"
+                       asp-route-currentFilter="@ViewData["Getservdetails"]"
+                       asp-route-pageNumber="@pg">
+                                @pg
+                            </a>
+                        </li>
+                    }
+
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingserv="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.PageIndex + 1)"
+                       asp-route-currentFilter="@ViewData["Getservdetails"]"
+                       class="Arrows btn btn-default @nextDisabled">
+                            <img class="Arrows" src="/img/2Next.png">
+                        </a>
+                    </li>
+                    <li class="Arrows">
+                        <a asp-action="Index"
+                       asp-route-sortingserv="@ViewData["CurrentSort"]"
+                       asp-route-pageNumber="@(Model.TotalPages)"
+                       asp-route-currentFilter="@ViewData["Getservdetails"]"
+                       class="Arrows btn btn-default @nextDisabled">
+                            <img class="Arrows" src="/img/1End.png">
+                        </a>
+                    </li>
+                </ul>
+            }
+        </div>
+    </div>
+</body>

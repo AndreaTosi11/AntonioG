@@ -1,0 +1,122 @@
+﻿
+/* All */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basics */
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-right: 0px;
+    background-color: #f3f3f3;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    color: #fff;
+    background-image: url("/img/NeroPietra.jpg");
+}
+
+.container {
+    min-height: 100%;
+    min-width: 100%;
+    margin: 0;
+    padding: 0 30px;
+    margin-right: 0px;
+    position: relative;
+    bottom: 0;
+    left: 0;
+}
+
+/* Titolo Alias title*/
+
+h1 {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    margin: 0;
+    color: #dec709;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* List sections Alias List */
+
+.form {
+    width: 100%;
+    height: fit-content;
+    block-size: fit-content;
+    display: block;
+}
+
+.formCenter, .btl, .form-submit {
+    display: grid;
+    text-align: center;
+    justify-items: right;
+}
+
+.formMaps {
+    width: 100%;
+    height: 400px;
+    border: #dec709 solid 3px;
+    border-radius: 10px;
+}
+
+.head-body {
+    width: 100%;
+    height: 30px;
+    padding: 20px 0;
+    display: grid;
+    text-align: center;
+    justify-items: center;
+    block-size: fit-content;
+}
+
+.head-body dl {
+    width: 100%;
+    padding: 0 30px;
+    block-size: fit-content;
+}
+.head-body dl dt {
+    padding: 10px 0 0 0;
+    color: #dec709;
+}
+
+.head-body dl dd {
+    padding: 0 0 10px 0;
+}
+
+p {
+    padding-left: 80%;
+}
+
+a.nav-link-back, input.btn-submit {
+    text-decoration: none;
+    background-color: #2f2f2f;
+    color: #dec709;
+    padding: 5px;
+    border: #fff solid 1px;
+    border-radius: 10px;
+}
+
+a.nav-link-back:hover, input.btn-submit:hover {
+    text-decoration: underline;
+    border: #dec709 solid 1px;
+    border-radius: 10px;
+}
+
+a.nav-link-back:active, input.btn-submit:active {
+    background-color: #dec709;
+    color: #2f2f2f;
+    border: #2f2f2f solid 1px;
+    border-radius: 10px;
+}

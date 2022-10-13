@@ -1,0 +1,90 @@
+﻿@model ProjectWorkDemo.Models.Dettaglio
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/details-delete.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["CancellaDettaglio"]</h1>
+    <div class="form">
+        <div class="formCenter">
+        <div class="btl">
+            <a class="nav-link-back" asp-controller="Dettaglio"  asp-action="Index" asp-route-idLavorazione="@ViewBag.IdLav">@sharedResource["TornaAllaLista"]</a>
+        </div>
+        <div class="head-body">
+        <dl>
+        <dt class = "col-sm-2">
+            @sharedResource["TipoLavorazione"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TipoLavorazione)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["DataInizioLavoro"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataInizioLavoro)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["DataFineLavoro"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DataFineLavoro)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["NomeLavoratore"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomeLavoratore)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["CognomeLavoratore"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CognomeLavoratore)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["CostoNetto"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CostoNetto)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["IVA"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Iva)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["CostoTotaleDelDettaglio"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CostoTotDet)
+        </dd>
+        <dt class = "col-sm-2">
+            @sharedResource["CodiceLavorazione"]
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLavorazioneNavigation.IdLavorazione)
+        </dd>
+        </dl>
+        <p class="question">@sharedResource["SeiSicuroDiVolerCancellare?"]</p>
+        </div>
+        <div class="form-submit">
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdDettaglio" />
+                <input type="submit" value="@sharedResource["Cancella"]" class="btn-submit" />
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+</body>

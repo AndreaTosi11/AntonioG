@@ -1,0 +1,75 @@
+﻿@model ProjectWorkDemo.Models.Dettaglio
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<head>
+	<meta charset="utf-8" />
+	<title>@ViewData["Title"] - Home</title>
+	<link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+</head>
+
+<body>
+<div class="container">
+<h1>@sharedResource["CreaDettaglio"]</h1>
+<div class="row">
+        <form class="from" asp-action="Create">
+            <div class="formCenter">
+            <div class="btl">
+                <a class="nav-link-back" asp-controller="Lavorazione" asp-action="Index">@sharedResource["TornaAllaLista"]</a>
+            </div>
+             <div class="form-group">
+                <label asp-for="IdLavorazione" class="control-label">@sharedResource["CodiceLavorazione"]</label>
+                <input asp-for="IdLavorazione" class="form-control" value="@ViewBag.IdLavorazione" readonly />
+                
+            </div>
+            <div class="form-group">
+                <label asp-for="TipoLavorazione" class="control-label">@sharedResource["DescrizioneDellaLavorazione"]</label>
+                <input asp-for="TipoLavorazione" class="form-control" />
+                <span asp-validation-for="TipoLavorazione" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataInizioLavoro" class="control-label">@sharedResource["DataInizioLavoro"]</label>
+                <input asp-for="DataInizioLavoro" class="form-control" />
+                <span asp-validation-for="DataInizioLavoro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataFineLavoro" class="control-label">@sharedResource["DataFineLavoro"]</label>
+                <input asp-for="DataFineLavoro" class="form-control" />
+                <span asp-validation-for="DataFineLavoro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeLavoratore" class="control-label">@sharedResource["NomeLavoratore"]</label>
+                <input asp-for="NomeLavoratore" class="form-control" />
+                <span asp-validation-for="NomeLavoratore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CognomeLavoratore" class="control-label">@sharedResource["CognomeLavoratore"]</label>
+                <input asp-for="CognomeLavoratore" class="form-control" />
+                <span asp-validation-for="CognomeLavoratore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CostoNetto" class="control-label">@sharedResource["CostoNetto"]</label>
+                <input asp-for="CostoNetto" class="form-control" />
+                <span asp-validation-for="CostoNetto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Iva" class="control-label">@sharedResource["IVA"]</label>
+                <input asp-for="Iva" class="form-control" />
+                <span asp-validation-for="Iva" class="text-danger"></span>
+            </div>
+        
+            <div class="form-submit">
+                <input type="submit" value="@sharedResource["Crea"]" class="btn-submit" />
+            </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

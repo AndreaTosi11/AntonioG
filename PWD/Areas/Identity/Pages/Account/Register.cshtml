@@ -1,0 +1,101 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="/css/create-edit.css" />
+    <link rel="stylesheet" href="/css/menuEfooter.css" />
+    <link rel="stylesheet" href="/css/media.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>@sharedResource["CreaAccount"]</h1>
+        <div class="row">
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div class="formCenter">
+                    <div class="btl">
+                        <a class="nav-link-back" asp-area="Identity" asp-page="/Account/Login">@sharedResource["Accesso"]</a>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Nome">@sharedResource["NomeUtente"]</label>
+                        <input asp-for="Input.Nome" class="form-control" autocomplete="given-name" aria-required="true" placeholder="nome obbligatorio" />
+                        <span asp-validation-for="Input.Nome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Cognome">@sharedResource["CognomeUtente"]</label>
+                        <input asp-for="Input.Cognome" class="form-control" autocomplete="family-name" aria-required="true" placeholder="cognome obbligatorio" />
+                        <span asp-validation-for="Input.Cognome" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Telefono">@sharedResource["TelefonoUtente"]</label>
+                        <input asp-for="Input.Telefono" class="form-control" autocomplete="tel" aria-required="true" placeholder="telefono obbligatorio" />
+                        <span asp-validation-for="Input.Telefono" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email">@sharedResource["e-MailUtente"]</label>
+                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="email obbligatoria" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password">@sharedResource["PasswordUtente"]</label>
+                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="campo obbligatorio" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.ConfermaPw">@sharedResource["ConfermaPasswordUtente"]</label>
+                        <input asp-for="Input.ConfermaPw" class="form-control" autocomplete="new-password" aria-required="true" placeholder="campo obbligatorio" />
+                        <span asp-validation-for="Input.ConfermaPw" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.RoleId" class="control-label"> Ruolo </label>
+                        <select asp-for="Input.RoleId" class="form-control" asp-items="ViewBag.RoleId"></select>
+                    </div>
+                    <div class="form-Submit">
+                        <input id="registerSubmit" type="submit" value="@sharedResource["CreaAccount"]" class="btn-submit" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        @*    <div class="col-md-6 col-md-offset-2">
+        <section>
+        <h3>Use another service to register.</h3>
+        <hr />
+        @{
+        if ((Model.ExternalLogins?.Count ?? 0) == 0)
+        {
+        <div>
+        <p>
+        There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">
+        article
+        about setting up this ASP.NET application to support logging in via external services
+        </a>.
+        </p>
+        </div>
+        }
+        else
+        {
+        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+        <div>
+        <p>
+        @foreach (var provider in Model.ExternalLogins)
+        {
+        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+        }
+        </p>
+        </div>
+        </form>
+        }
+        }
+        </section>
+        </div>*@
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
